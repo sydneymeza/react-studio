@@ -5,17 +5,40 @@ export default function BakeryButton(props) {
   // update cart
   function handleClick() {
     // const nextCart = { name: props.name, price: props.price, number: 1 };
-    // let newItem = false;
-      
+    let newItem = true;
+
     // Re-render with the new array
 
-    let cartItem = {
-        name: props.name,
-        price: props.price,
-        amount: props.number,
+    let newCartItem = {
+      name: props.name,
+      price: props.price,
+      number: 1,
+    };
+
+    for (let i = 0; i < props.cartItems.length; i++) {
+      console.log(props.cartItems[i].name);
+      if (newCartItem.name === props.cartItems[i].name) {
+        newItem = false;
+      }
+    }
+
+    if (newItem) {
+      props.updateCart([...props.cartItems, newCartItem]);
+    } else {
+      props.updateCart(
+        props.cartItems.map((cartItem) => {
+          if (cartItem.name === newCartItem.name) {
+            // Create a *new* object with changes
+
+            return { ...cartItem, number: cartItem.number + 1 };
+          } else {
+            // No changes
+            return cartItem;
+          }
+        })
+      );
     }
   }
-
 
   return (
     <div className="BakeryButton">

@@ -14,14 +14,14 @@ function App() {
   // TODO: use useState to create a state variable to hold the state of the cart
   /* add your cart state code here */
 
-  const [cart, updateCart] = useState([{}]);
+  const [cart, updateCart] = useState([]);
   const [cartPrice, updateCartPrice] = useState(0.0);
 
   // const updatePrice = () => {updateCartPrice(cartPrice)}
 
   return (
     <div className="App">
-      <h1>Sydney's Bakery</h1>{" "}
+      <h1>Sydney's Bakery</h1>
       {/* TODO: personalize your bakery (if you want) */}
       {bakeryData.map(
         (
