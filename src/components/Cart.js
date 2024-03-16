@@ -8,8 +8,7 @@ export default function Cart(props) {
   if (props.cartItems.length === 0) {
     return (
       <div className="Cart">
-        <div className="mock-history" aria-label="History">
-          {/* This is where command history will go */}
+        <div className="cart" aria-label="cart">
           <div>
             <h1>Cart</h1>
             <p>Nothing is here yet!</p>
@@ -21,8 +20,7 @@ export default function Cart(props) {
   } else {
     return (
       <div className="Cart">
-        <div className="mock-history" aria-label="History">
-          {/* This is where command history will go */}
+        <div className="cart" aria-label="cart">
           <div>
             <h1>Cart</h1>
             {props.cartItems.map((cartItem) => (
@@ -33,6 +31,7 @@ export default function Cart(props) {
               </div>
             ))}
           </div>
+          <h1>Total: ${props.cartPrice}</h1>
         </div>
       </div>
     );

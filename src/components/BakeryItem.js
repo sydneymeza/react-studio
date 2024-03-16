@@ -14,7 +14,7 @@ export default function BakeryItem(props) {
       <p>{props.description}</p>
       <p>{props.price}</p>
       {/* TODO: personalize your bakery (if you want) */}
-      <BakeryButton cartItems={props.cart} price={props.price} updateCart={props.updateCart} name={props.name}/>
+      <BakeryButton cartItems={props.cart} price={props.price} updateCart={props.updateCart} name={props.name} updatePrice={props.updatePrice} currPrice={props.currPrice}/>
     </div>
   );
 }

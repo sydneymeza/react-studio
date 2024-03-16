@@ -1,11 +1,8 @@
 export default function BakeryButton(props) {
-  // TODO: use useState to create a state variable to hold the state of the cart
-  /* add your cart state code here */
-  //add current item to cart
-  // update cart
   function handleClick() {
     // const nextCart = { name: props.name, price: props.price, number: 1 };
     let newItem = true;
+    let updatePrice = 0.0;
 
     // Re-render with the new array
 
@@ -19,17 +16,18 @@ export default function BakeryButton(props) {
       console.log(props.cartItems[i].name);
       if (newCartItem.name === props.cartItems[i].name) {
         newItem = false;
+        updatePrice = props.cartItems[i].price;
       }
     }
 
     if (newItem) {
       props.updateCart([...props.cartItems, newCartItem]);
+      updatePrice = newCartItem.price;
     } else {
       props.updateCart(
         props.cartItems.map((cartItem) => {
           if (cartItem.name === newCartItem.name) {
             // Create a *new* object with changes
-
             return { ...cartItem, number: cartItem.number + 1 };
           } else {
             // No changes
@@ -38,12 +36,14 @@ export default function BakeryButton(props) {
         })
       );
     }
+    let newPrice = props.currPrice + updatePrice;
+    let fixedPrice = Math.round(newPrice * 100) / 100;
+    props.updatePrice(fixedPrice);
   }
 
   return (
     <div className="BakeryButton">
       <button onClick={handleClick}>Add to Cart</button>
-      {/* TODO: personalize your bakery (if you want) */}
     </div>
   );
 }

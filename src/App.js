@@ -36,13 +36,15 @@ function App() {
             image={item.image}
             updateCart={updateCart}
             cart={cart}
+            updatePrice={updateCartPrice}
+            currPrice={cartPrice}
           />
         )
       )}
       <div>
         {/* <h2>Cart</h2> */}
         {/* TODO: render a list of items in the cart */}
-        <Cart cartItems={cart} cartPrice={cartPrice} />
+        <Cart cartItems={cart} cartPrice={cartPrice} curPrice={cartPrice}/>
       </div>
     </div>
   );
